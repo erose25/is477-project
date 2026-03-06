@@ -40,20 +40,20 @@ Both datasets have some common variables which would allow for their integration
 # Timeline
 |Task|Description|Timeline|Responsible|
 |----|-----------|--------|-----------|
-|Plan Finalization & Lifecycle Design| Define project scope, finalize research questions, map workflow according to Data Lifecycle requirements. | Week 1 | Both |
-|Data Acquisition| Download datasets from World Bank Global Index Findex Database and Pverty and Inequality Platform.  Document data sources, access methods, and formats to satisfy Data Collection and Acquisition requirements. | Week 1 | Elizabeth |
+|Plan Finalization & Lifecycle Design| Define project scope, finalize research questions, and map workflow according to Data Lifecycle requirements. | Week 1 | Both |
+|Data Acquisition| Download datasets from World Bank Global Index Findex Database and Poverty and Inequality Platform.  Document data sources, access methods, and formats to satisfy Data Collection and Acquisition requirements. | Week 1 | Elizabeth |
 |Storage and File Organization Setup| Create a structured repository containing folders for raw data, processed data, scripts, documentation, and results.  Define file naming conventions and data structures (CSV files and Pandas Dataframes) to meet File Storage and Organization requirements. | Week 1 | Elizabeth |
-|Metadata and Dataset Documentation| Document metadata such as dataset source, schema, variable definitions, file formats, and licensing information to support Metadata and Data Documentation and Reproduceability and Provenance. | Week 2 | Elizabeth |
+|Metadata and Dataset Documentation| Document metadata such as dataset source, schema, variable definitions, file formats, and licensing information to support Metadata and Data Documentation and Reproducibility and Provenance. | Week 2 | Elizabeth |
 |Data Quality Assessment| Evaluate datasets for missing values, inconsistent country codes, duplicates, and structural inconsistencies.  Record results of the evaluation to fulfill Data Quality requirements. | Week 2 | Elizabeth |
-|Data Cleaning| Apply Cleaning methods such as handling missing values, standardizing country codes, correcting formatting issues, and removing unecessary variables.  This step addresses Data Cleaning requirements within the Extraction and Enrichment stage. | Week 2-3 | Elizabeth |
-|Data Integration| Merge Datasets using Python and the Pandas library by aligning shared varibales such as Country Code and Year to fulfill Data Integration requirements. | Week 3 | Elizabeth |
+|Data Cleaning| Apply Cleaning methods such as handling missing values, standardizing country codes, correcting formatting issues, and removing unnecessary variables.  This step addresses Data Cleaning requirements within the Extraction and Enrichment stage. | Week 2-3 | Elizabeth |
+|Data Integration| Merge Datasets using Python and the Pandas library by aligning shared variables such as Country Code and Year to fulfill Data Integration requirements. | Week 3 | Elizabeth |
 |Data Enrichment| Create derived indicators or additional features that improve analysis (e.g. normalized metrics or aggregated indicators), fulfilling the Extraction and Enrichment requirement. | Week 3 | Elizabeth |
 |Exploratory Data Analysis | Conduct exploratory statistical analysis to identify correlations between financial inclusion indicators and poverty measures.  This step helps validate the dataset and supports future interpretation. | Week 4 | Harsha |
-|Workflow Automation| Implement scripts or notebooks that automate the entire workflow (from loading raw data through data cleaning, integration and analysis) to meet Workflow Automation and Provenance requirements. | Week 4-5 | Both | 
+|Workflow Automation| Implement scripts or notebooks that automate the entire workflow (from loading raw data through data cleaning, integration, and analysis) to meet Workflow Automation and Provenance requirements. | Week 4-5 | Both | 
 |Ethical Data Handling Review| Review licensing terms and confirm compliance with dataset usage policies, ensuring proper citation and responsible data use according to Ethical Data Handling requirements. | Week 5 | Both | 
-|Reproduceability Implementation| Ensure the workflow can be replicated by documenting scripts, dependencies, and processing steps.  This fulfills Reproduceability and Provenance requirements. | Week 5 | Both | 
+| Reproducibility Implementation| Ensure the workflow can be replicated by documenting scripts, dependencies, and processing steps.  This fulfills Reproducibility and Provenance requirements. | Week 5 | Both | 
 |Final Analysis and Interpretation| Conduct final statistical analysis and interpret the results related to financial inclusion and poverty reduction trends. | Week 5 | Harsha | 
-|Final Report and Documentation| Compile the report, including methodology, workflow documentation, results, and metadata descriptions to support Metadata and Data Documentation and overall project reproduceability. | Week 6 | Both |
+|Final Report and Documentation| Compile the report, including methodology, workflow documentation, results, and metadata descriptions to support Metadata and Data Documentation and overall project reproducibility. | Week 6 | Both |
 
 
 # Constraints
@@ -110,7 +110,3 @@ The specific types of visualizations that will best communicate the results (e.g
 5. **Workflow Implementation**
 
 While the workflow will be automated using Python scripts or Jupyter notebooks, the exact implementation details (such as modular scripts or a pipeline structure) will be determined during development.
-
-
-# Conclusion
-INFO
