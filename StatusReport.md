@@ -92,6 +92,7 @@ INFO
 ### Harsha Venkatnarayan
 - Contributed to refining research questions and approach
 - Analyzed and cleaned Findex dataset
+- Assisted in integration of Findex and PIP datasets
 - Documented proceedings and findings from Findex dataset to status report 
 - Documented sources and variable definitions to Metadata and Dataset Documentation
 
