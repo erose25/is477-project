@@ -31,7 +31,11 @@ Both datasets were stored in their raw and untouched format to ensure that the i
 - is477-project/data/raw/GlobalFindexDatabase2025.csv
 - is477-project/data/raw/pip_dataset.csv
 
-## 5. Data Quality Assessment and Cleaning: 
+## 5. Metadata and Dataset Documentation 
+We documented the URLs of sources of the Findex and PIP datasets as well as defined the variables seen across the datasets. Path to this file can be found below: 
+- is477-project/docs/metadata_documentation
+
+## 6. Data Quality Assessment and Cleaning: 
 We assessed both datasets to identify: 
 - Missing values
 - Irrelevant variables
@@ -47,13 +51,24 @@ The cleaned datasets are stored in the following paths:
 
 A key finding of this stage was that the Findex is not updated each year, but rather every few years, which required an alteration to our integration strategy.
 
-## 6. Data Integration: 
+## 8. Data Integration: 
 Using the country code and year variables as keys, we merged the cleaned datasets together. The path for the integrated datasets are: 
 - is477-project/data/processed/integrated_timeseries
 - is477-project/data/processed/integrated_2024
 
 # Updated Timeline
-INFO
+|Task|Status|Timeline|
+|----|-----------|--------|
+|Plan Finalization|Completed|Week 1|
+|Ethical Review|Completed|Week 1|
+|Data Organization|Completed|Week 1|
+|Data Acquisition|Completed|Week 2|
+|Metadata and Dataset Documentation|Completed|Week 2|
+|Data Quality Assessment and Cleaning|Completed|Week 2|
+|Data Integration|Completed|Week 3|
+|Exploratory Data Analysis|Not Started|Week 4-5|
+|Final Analysis|Not Started|Week 5-6|
+|Final Report|Not Started|Week 6|
 
 # Changes to Project Plan
 INFO
