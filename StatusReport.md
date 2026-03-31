@@ -71,14 +71,29 @@ Using the country code and year variables as keys, we merged the cleaned dataset
 |Final Report|Not Started|Week 6|
 
 # Changes to Project Plan
-INFO
+## 1. Refining Integration Strategy: 
+Our initial plan was for a simple merge of the two datasets, however, since there were missing values in the data, we decided to prioritize the quality of the data rather than simply the size of available data. 
+
+## 2. Narrowed Selection of Key Indicators: 
+We reduced the number of key variables we wanted to focus on to: 
+- Bank account ownership
+- Digital payments usage
+- Poverty headcount ratio
+
+## 3. Adjustments for Temporal Mismatch: 
+We found that the Findex dataset only covered certain years (2011, 2014, 2017, 2021 and 2024). We updated our initial project plan to two approaches: 
+- The first is to merge the data of the Findex and PIP datasets for the years 2011, 2014, 2017 and 2021 for a time series analysis based on the country code, bank account ownership, mobile money account and the poverty headcount ratio.
+- The second is to merge the data of the Findex and PIP datasets for just 2024. Between 2021 and 2024, people gained access to digitally-enabled accounts. By adding this variable in the 2024 analysis, we hope to assess the impact of digitally-enabled accounts on global poverty.
 
 # Challenges and Solutions
 INFO
 
 # Individual Contributions
 ### Harsha Venkatnarayan
-INFO
+- Contributed to refining research questions and approach
+- Analyzed and cleaned Findex dataset
+- Documented proceedings and findings from Findex dataset to status report 
+- Documented sources and variable definitions to Metadata and Dataset Documentation
 
 ### Elizabeth Rosenberger
 INFO
