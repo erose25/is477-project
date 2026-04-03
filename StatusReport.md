@@ -86,7 +86,15 @@ We found that the Findex dataset only covered certain years (2011, 2014, 2017, 2
 - The second is to merge the data of the Findex and PIP datasets for just 2024. Between 2021 and 2024, people gained access to digitally-enabled accounts. By adding this variable in the 2024 analysis, we hope to assess the impact of digitally-enabled accounts on global poverty.
 
 # Challenges and Solutions
-INFO
+One major challenge involved the structure of the Poverty and Inequality Platform (PIP) dataset. The dataset contained a large number of columns (over 40), many of which were not relevant to the research question, including survey metadata, decile distributions, and auxiliary economic indicators. This made it difficult to identify which variables were necessary for analysis. To address this, the dataset was reduced to only the key variables required for the project: country_code, country_name, reporting_year, headcount, and gini. These variables were then renamed and standardized to align with the Global Findex dataset.
+
+Another challenge was the presence of non-country observations in the PIP dataset, such as regional aggregates (e.g., “Sub-Saharan Africa” or “Europe & Central Asia”). These entries would have caused incorrect merges and misleading results if not removed. This issue was resolved by filtering the dataset to include only valid ISO 3-letter country codes.
+
+A third challenge involved missing values in key variables such as poverty headcount and Gini coefficient. Since these variables are central to the analysis, rows with missing values were removed to ensure data quality and consistency.
+
+A significant integration challenge arose due to differences in temporal coverage between the datasets. The Global Findex dataset is collected every few years (e.g., 2011, 2014, 2017, 2021), while the PIP dataset contains more frequent yearly observations. This mismatch initially resulted in many unmatched records during merging. To resolve this, the PIP dataset was filtered to include only years that overlap with the Global Findex dataset.
+
+Finally, minor inconsistencies in column naming conventions (such as capitalization and spacing) caused initial merge errors. These were resolved by standardizing all column names to lowercase and ensuring consistent naming across both datasets.
 
 # Individual Contributions
 ### Harsha Venkatnarayan
@@ -97,7 +105,19 @@ INFO
 - Documented sources and variable definitions to Metadata and Dataset Documentation
 
 ### Elizabeth Rosenberger
-INFO
+- Responsible for data acquisition, preparation, and cleaning throughout the milestone
+- Downloaded the Poverty and Inequality Platform (PIP) dataset and transformed it into a usable time-series format
+- Selected relevant variables, renamed columns, handled missing values, removed non-country observations, and ensured consistent data types
+- Implemented data integration by merging the cleaned PIP dataset with the Global Findex dataset using Python and Pandas
+- Organized the repository structure (raw vs processed data), saved intermediate and final datasets, and documented the cleaning process through metadata and code comments
 
 # Next Steps
-INFO
+One major challenge involved the structure of the Poverty and Inequality Platform (PIP) dataset. The dataset contained a large number of columns (over 40), many of which were not relevant to the research question, including survey metadata, decile distributions, and auxiliary economic indicators. This made it difficult to identify which variables were necessary for analysis. To address this, the dataset was reduced to only the key variables required for the project: country_code, country_name, reporting_year, headcount, and gini. These variables were then renamed and standardized to align with the Global Findex dataset.
+
+Another challenge was the presence of non-country observations in the PIP dataset, such as regional aggregates (e.g., “Sub-Saharan Africa” or “Europe & Central Asia”). These entries would have caused incorrect merges and misleading results if not removed. This issue was resolved by filtering the dataset to include only valid ISO 3-letter country codes.
+
+A third challenge involved missing values in key variables such as poverty headcount and Gini coefficient. Since these variables are central to the analysis, rows with missing values were removed to ensure data quality and consistency.
+
+A significant integration challenge arose due to differences in temporal coverage between the datasets. The Global Findex dataset is collected every few years (e.g., 2011, 2014, 2017, 2021), while the PIP dataset contains more frequent yearly observations. This mismatch initially resulted in many unmatched records during merging. To resolve this, the PIP dataset was filtered to include only years that overlap with the Global Findex dataset.
+
+Finally, minor inconsistencies in column naming conventions (such as capitalization and spacing) caused initial merge errors. These were resolved by standardizing all column names to lowercase and ensuring consistent naming across both datasets.
