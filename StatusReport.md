@@ -47,7 +47,7 @@ The cleaned datasets are stored in the following paths:
 - is477-project/data/processed/findex_cleaned_2024
 - is477-project/data/processed/findex_cleaned_timeseries
 - is477-project/data/processed/pip_cleaned_2024
-- is477-project/data/processed/pip_cleaned/timeseries
+- is477-project/data/processed/pip_cleaned_timeseries
 
 A key finding of this stage was that the Findex is not updated each year, but rather every few years, which required an alteration to our integration strategy.
 
