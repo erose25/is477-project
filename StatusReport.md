@@ -51,7 +51,7 @@ The cleaned datasets are stored in the following paths:
 
 A key finding of this stage was that the Findex is not updated each year, but rather every few years, which required an alteration to our integration strategy.
 
-## 8. Data Integration: 
+## 7. Data Integration: 
 Using the country code and year variables as keys, we merged the cleaned datasets together. The path for the integrated datasets are: 
 - is477-project/data/processed/integrated_timeseries
 - is477-project/data/processed/integrated_2024
