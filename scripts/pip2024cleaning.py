@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
+# In[8]:
 
 
-get_ipython().run_cell_magic('writefile', '../scripts/pip2024cleaning.py', '\nimport pandas as pd \n')
+get_ipython().run_cell_magic('writefile', '../../scripts/pip2024cleaning.py', '')
 
 
-# In[13]:
+# In[ ]:
+
+
+import pandas as pd 
+
+
+# In[ ]:
 
 
 df = pd.read_csv("../raw/pip_dataset.csv")
@@ -16,7 +22,7 @@ df.head()
 df.info()
 
 
-# In[14]:
+# In[ ]:
 
 
 ## keeping only relevant rows to our analysis
@@ -30,7 +36,7 @@ df = df[[
 ]]
 
 
-# In[15]:
+# In[ ]:
 
 
 ## renaming for future merging 
@@ -41,7 +47,7 @@ df = df.rename(columns = {
 })
 
 
-# In[16]:
+# In[ ]:
 
 
 ## dropping the rows with unusual countries like "Sub-Saharan Africa" and "Europe and Central Asia"  
@@ -50,13 +56,13 @@ df = df[df["country_code"].notna()]
 df = df[df["country_code"].str.len() == 3]
 
 
-# In[17]:
+# In[9]:
 
 
 df.isnull().sum()
 
 
-# In[18]:
+# In[10]:
 
 
 ## removing duplicates where we have the same year more than once for the same country 
@@ -64,7 +70,7 @@ df.isnull().sum()
 df = df.drop_duplicates(subset = ["country_code", "year"])
 
 
-# In[19]:
+# In[ ]:
 
 
 ## ensuring correct data types 
@@ -76,15 +82,19 @@ df["gini"] = df["gini"].astype(float)
 df.to_csv("../processed/pip_cleaned_2024.csv", index = False)
 
 
-# In[20]:
+# In[ ]:
 
 
 ## sort for timeseries
 
 df = df.sort_values(by = ["country_code", "year"])
 
+df_2024 = df[df["year"] == 2024]
 
-# In[21]:
+print(df_2024)
+
+
+# In[ ]:
 
 
 ## save cleaned dataset
@@ -92,7 +102,7 @@ df = df.sort_values(by = ["country_code", "year"])
 df.to_csv("../processed/pip_cleaned_timeseries.csv", index = False)
 
 
-# In[22]:
+# In[ ]:
 
 
 df
@@ -101,5 +111,5 @@ df
 # In[ ]:
 
 
-
+get_ipython().system("jupyter nbconvert --to script pip_cleaned.ipynb --output-dir='../../scripts/' --output='pip2024cleaning'")
 
