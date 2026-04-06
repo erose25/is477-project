@@ -1,8 +1,7 @@
 import os
 import pandas as pd
 
-file = "C:/Users/harsh/Downloads/GlobalFindexDatabase2025.csv"
-df = pd.read_csv(file)
+df = df = pd.read_csv("../raw/GlobalFindexDataset2025.csv")
 
 df.columns = df.columns.str.strip().str.lower()
 rename_map = {"countrynewwb": "country", "codewb": "country_code", "year": "year", "account_t_d": "account_pct", "fiaccount_t_d": "bank_account_pct", "mobileaccount_t_d": "mobile_account_pct", "borrow_any_t_d": "borrowed_pct", "save_any_t_d": "saved_pct", "dig_acc": "digital_account_pct"}
@@ -23,5 +22,5 @@ for col in numeric_cols:
     df[col] = pd.to_numeric(df[col], errors = "coerce")
 df
 
-output = "C:/Users/harsh/Downloads/findex_cleaned_2024.csv"
+output = pd.read_csv("../processed/findex_cleaned_2024.csv")
 df.to_csv(output, index = False)
