@@ -98,12 +98,6 @@ merged.to_csv(output_path, index=False)
 print(f"\nMaster dataset saved to: {output_path}")
 
 
-# In[53]:
-
-
-get_ipython().system("jupyter nbconvert --to script merging.ipynb --output-dir='../../scripts/' --output='2024merging.py'")
-
-
 # In[67]:
 
 
@@ -180,6 +174,22 @@ print("\nMissing values by column:\n", missing_summary)
 # Duplicate country-year rows
 duplicates = merged_2024.duplicated(subset=["country_code", "year"]).sum()
 print("\nDuplicate country-year rows:", duplicates)
+
+
+# In[76]:
+
+
+## save merged dataset 
+output_path_2024 = "../processed/master_dataset_2024.csv"
+merged.to_csv(output_path_2024, index=False)
+
+print(f"\nMaster dataset saved to: {output_path}")
+
+
+# In[77]:
+
+
+get_ipython().system("jupyter nbconvert --to script merging.ipynb --output-dir='../../scripts/' --output='2024merging.py'")
 
 
 # In[ ]:
