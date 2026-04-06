@@ -22,5 +22,5 @@ for col in numeric_cols:
     df[col] = pd.to_numeric(df[col], errors = "coerce")
 df
 
-output = "C:/Users/harsh/Downloads/findex_cleaned_timeseries.csv"
+output = pd.read_csv("../processed/findex_cleaned_timeseries.csv")
 df.to_csv(output, index = False)
