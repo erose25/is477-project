@@ -53,8 +53,8 @@ A key finding of this stage was that the Findex is not updated each year, but ra
 
 ## 7. Data Integration: 
 Using the country code and year variables as keys, we merged the cleaned datasets together. The path for the integrated datasets are: 
-- is477-project/data/processed/integrated_timeseries
-- is477-project/data/processed/integrated_2024
+- is477-project/data/processed/master_dataset_2024
+- is477-project/data/processed/master_dataset_timeseries
 
 # Updated Timeline
 |Task|Status|Timeline|
