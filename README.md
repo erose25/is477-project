@@ -56,4 +56,6 @@ INFO
 INFO
 
 ## References
-INFO
+- World Bank Global Findex Database
+- World Bank Poverty and Inequality Platform
+- Python Pandas Documentation
