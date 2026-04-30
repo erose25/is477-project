@@ -4,7 +4,7 @@ import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-file = "C:/Users/harsh/Downloads/master_timeseries_dataset.csv"
+file = "../processed/master_timeseries_dataset.csv"
 df = pd.read_csv(file)
 
 df["Account_Change"] = df.groupby("country_code")["account_pct"].diff()
@@ -32,7 +32,7 @@ global_trends.plot(linewidth = 3)
 plt.title("Global Trends: Financial Inclusion vs Poverty")
 plt.xlabel("Year")
 plt.ylabel("Value")
-plt.savefig("C:/Users/harsh/Downloads/TimeseriesGlobalTrendsPlot.png")
+plt.savefig("../output/TimeseriesGlobalTrendsPlot.png")
 plt.show()
 
 country_avg_df = (df.groupby("country_code")[cols].mean().loc[countries])
@@ -44,5 +44,5 @@ plt.ylabel("Average Value")
 plt.xticks(rotation = 45)
 plt.legend(title = "Metrics")
 plt.tight_layout()
-plt.savefig("C:/Users/harsh/Downloads/AveragedTimeseriesFinancialAccess-PovertyComparison.png")
+plt.savefig("../output/AveragedTimeseriesFinancialAccess-PovertyComparison.png")
 plt.show()
