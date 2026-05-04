@@ -1,0 +1,97 @@
+digraph WorkflowDAG {
+    rankdir=TB;
+    nodesep=0.3;
+    ranksep=0.5;
+    splines=ortho;
+    fontname="Arial";
+    fontsize=12;
+    compound=true;
+
+    // Graph label
+    label="Financial Inclusion & Poverty Analysis Pipeline\nEnd-to-End Workflow";
+    labelloc="t";
+
+    // Node styles
+    node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+
+    // RAW INPUT FILES
+
+    // CLEANING RULES
+    "clean_pip_2024" [fillcolor="#FFE5B4", color="#FF8C00", label="clean_pip_2024\n(pip2024cleaning.py)"];
+    "clean_pip_timeseries" [fillcolor="#FFE5B4", color="#FF8C00", label="clean_pip_timeseries\n(pip2024cleaning.py)"];
+    "clean_findex_2024" [fillcolor="#B4E5FF", color="#0088FF", label="clean_findex_2024\n(findex_cleaning.py)"];
+    "clean_findex_timeseries" [fillcolor="#B4E5FF", color="#0088FF", label="clean_findex_timeseries\n(findex_cleaning.py)"];
+
+    // PROCESSED FILES
+
+    // MERGING RULES
+    "merge_2024_cross_sectional" [fillcolor="#D4B4FF", color="#6600CC", label="merge_2024_cross_sectional\n(2024merging.py)"];
+    "merge_timeseries" [fillcolor="#D4B4FF", color="#6600CC", label="merge_timeseries\n(2024merging.py)"];
+
+    // ANALYSIS RULES
+    "analyze_2024_cross_sectional" [fillcolor="#B4FFB4", color="#00AA00", label="analyze_2024_cross_sectional\n(merged_2024_analysis.py)"];
+    "analyze_timeseries" [fillcolor="#B4FFB4", color="#00AA00", label="analyze_timeseries\n(merged_timeseries_analysis.py)"];
+
+    // OUTPUT FILES (Final results)
+
+    // EDGES: Raw Data -> Cleaning
+
+    // EDGES: Cleaning -> Processed Files
+
+    // EDGES: Processed Files -> Merging
+
+    // EDGES: Merging -> Master Files
+
+    // EDGES: Master Files -> Analysis
+
+    // EDGES: Analysis -> Output Files
+
+    // Visual grouping clusters
+    subgraph cluster_raw {
+        label="INPUT DATA (Raw Files)";
+        style=filled;
+        fillcolor="#FFF8F0";
+        color="#FF8C00";
+        penwidth=2;
+    }
+
+    subgraph cluster_cleaning {
+        label="DATA CLEANING STAGE";
+        style=filled;
+        fillcolor="#FFF5E8";
+        color="#FF8C00";
+        penwidth=2;
+        "clean_pip_2024";
+        "clean_pip_timeseries";
+        "clean_findex_2024";
+        "clean_findex_timeseries";
+    }
+
+    subgraph cluster_merging {
+        label="DATA MERGING STAGE";
+        style=filled;
+        fillcolor="#F0E8FF";
+        color="#6600CC";
+        penwidth=2;
+        "merge_2024_cross_sectional";
+        "merge_timeseries";
+    }
+
+    subgraph cluster_analysis {
+        label="ANALYSIS STAGE";
+        style=filled;
+        fillcolor="#E8FFE8";
+        color="#00AA00";
+        penwidth=2;
+        "analyze_2024_cross_sectional";
+        "analyze_timeseries";
+    }
+
+    subgraph cluster_outputs {
+        label="FINAL OUTPUTS (PNG Figures + Results)";
+        style=filled;
+        fillcolor="#FFF0E8";
+        color="#CC6600";
+        penwidth=2;
+    }
+}

@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\cli.py", line 2220, in args_to_api
+    dag_api = workflow_api.dag(
+        dag_settings=DAGSettings(
+    ...<17 lines>...
+        ),
+    )
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\api.py", line 356, in dag
+    return DAGApi(
+        self.snakemake_api,
+        self,
+        dag_settings=dag_settings,
+    )
+
+  File "<string>", line 6, in __init__
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\api.py", line 462, in __post_init__
+    self.workflow_api._workflow.dag_settings = self.dag_settings
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\api.py", line 408, in _workflow
+    workflow.include(
+    ~~~~~~~~~~~~~~~~^
+        self.snakefile, overwrite_default_target=True, print_compilation=False
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\workflow.py", line 1651, in include
+    code, rulecount = parse(
+                      ~~~~~^
+        snakefile,
+        ^^^^^^^^^^
+    ...<2 lines>...
+        linemap=linemap,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\parser.py", line 1402, in parse
+    for t, orig_token in automaton.consume():
+                         ~~~~~~~~~~~~~~~~~^^
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\parser.py", line 155, in consume
+    for token in self.snakefile:
+                 ^^^^^^^^^^^^^^
+
+  File "C:\Users\ellyf\miniconda3\Lib\site-packages\snakemake\parser.py", line 1370, in __next__
+    return next(self.tokens)
+
+  File "C:\Users\ellyf\miniconda3\Lib\tokenize.py", line 582, in _generate_tokens_from_c_tokenizer
+    for info in it:
+                ^^
+
+  File "<frozen codecs>", line 325, in decode
+
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x97 in position 93: invalid start byte
+

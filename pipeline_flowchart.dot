@@ -1,0 +1,178 @@
+digraph PipelineFlowchart {
+    rankdir=TB;
+    nodesep=0.5;
+    ranksep=0.5;
+    splines=ortho;
+    fontname="Arial";
+    fontsize=11;
+    compound=true;
+
+    // Node styles
+    node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+    edge [penwidth=2];
+
+    // ============================================================
+    // RAW INPUT FILES (Top)
+    // ============================================================
+    node [shape=folder, fillcolor="#FFE5B4", color="#FF8C00"];
+    pip_raw [label="PIP Dataset\n(data/raw/pip_dataset.csv)"];
+    findex_raw [label="Global Findex Dataset\n(data/raw/GlobalFindexDataset2025.csv)"];
+
+    // ============================================================
+    // CLEANING SCRIPTS & OUTPUTS
+    // ============================================================
+    node [shape=box, fillcolor="#B4E5FF", color="#0088FF"];
+    clean_pip [label="pip2024cleaning.py"];
+    clean_findex [label="findex2024cleaning.py"];
+    clean_findex_ts [label="findex_cleaning_timeseries.py"];
+
+    node [shape=box, fillcolor="#E8F4FF", color="#0088FF"];
+    pip_cleaned [label="pip_cleaned_2024.csv\n+\npip_cleaned_timeseries.csv"];
+    findex_cleaned [label="findex_cleaned_2024.csv"];
+    findex_cleaned_ts [label="findex_cleaned_timeseries.csv"];
+
+    // ============================================================
+    // MERGING SCRIPTS & OUTPUTS
+    // ============================================================
+    node [shape=box, fillcolor="#D4B4FF", color="#6600CC"];
+    merge_2024 [label="2024merging.py\n(--cross-sectional)"];
+    merge_ts [label="2024merging.py\n(--timeseries)"];
+
+    node [shape=box, fillcolor="#C49BFF", color="#6600CC"];
+    master_2024 [label="master_dataset_2024.csv"];
+    master_ts [label="master_timeseries_dataset.csv"];
+
+    // ============================================================
+    // ANALYSIS SCRIPTS & OUTPUTS
+    // ============================================================
+    node [shape=box, fillcolor="#B4FFB4", color="#00AA00"];
+    analyze_2024 [label="merged_2024_analysis.py"];
+    analyze_ts [label="merged_timeseries_analysis.py"];
+
+    // ============================================================
+    // FINAL OUTPUTS (Bottom)
+    // ============================================================
+    node [shape=note, fillcolor="#90EE90", color="#00AA00"];
+    output1 [label="BankOwnership-Poverty2024Scatter.png"];
+    output2 [label="MobileAccount-Poverty2024Scatter.png"];
+    output3 [label="DigitalOwnership-Poverty2024Scatter.png"];
+    output4 [label="DigitalAccess-Poverty2024Comparison.png"];
+
+    node [shape=note, fillcolor="#90EE90", color="#00AA00"];
+    output5 [label="TimeseriesGlobalTrendsPlot.png"];
+    output6 [label="AveragedTimeseriesFinancialAccess-PovertyComparison.png"];
+
+    node [shape=note, fillcolor="#FFE5CC", color="#CC6600"];
+    output_stats [label="correlation_analysis.csv\n+\nregression_results.txt"];
+
+    // ============================================================
+    // DATA FLOW ARROWS
+    // ============================================================
+
+    // Stage 1: Raw -> Cleaning Scripts
+    pip_raw -> clean_pip [color="#FF8C00", label="input"];
+    findex_raw -> clean_findex [color="#0088FF", label="input"];
+    findex_raw -> clean_findex_ts [color="#0088FF", label="input"];
+
+    // Stage 2: Cleaning Scripts -> Cleaned Files
+    clean_pip -> pip_cleaned [color="#0088FF", label="output"];
+    clean_findex -> findex_cleaned [color="#0088FF", label="output"];
+    clean_findex_ts -> findex_cleaned_ts [color="#0088FF", label="output"];
+
+    // Stage 3: Cleaned Files -> Merge Scripts
+    pip_cleaned -> merge_2024 [color="#6600CC", label="input"];
+    findex_cleaned -> merge_2024 [color="#6600CC", label="input"];
+    pip_cleaned -> merge_ts [color="#6600CC", label="input"];
+    findex_cleaned_ts -> merge_ts [color="#6600CC", label="input"];
+
+    // Stage 4: Merge Scripts -> Master Files
+    merge_2024 -> master_2024 [color="#6600CC", label="output"];
+    merge_ts -> master_ts [color="#6600CC", label="output"];
+
+    // Stage 5: Master Files -> Analysis Scripts
+    master_2024 -> analyze_2024 [color="#00AA00", label="input"];
+    master_ts -> analyze_ts [color="#00AA00", label="input"];
+
+    // Stage 6: Analysis Scripts -> Final Outputs
+    analyze_2024 -> output1 [color="#00AA00", label="generates"];
+    analyze_2024 -> output2 [color="#00AA00", label="generates"];
+    analyze_2024 -> output3 [color="#00AA00", label="generates"];
+    analyze_2024 -> output4 [color="#00AA00", label="generates"];
+    analyze_2024 -> output_stats [color="#00AA00", label="generates"];
+
+    analyze_ts -> output5 [color="#00AA00", label="generates"];
+    analyze_ts -> output6 [color="#00AA00", label="generates"];
+    analyze_ts -> output_stats [color="#00AA00", label="generates"];
+
+    // ============================================================
+    // CLUSTERS FOR VISUAL ORGANIZATION
+    // ============================================================
+    subgraph cluster_raw {
+        label="INPUT DATA (Raw Files)";
+        style=filled;
+        fillcolor="#FFF8F0";
+        color="#FF8C00";
+        penwidth=2;
+        pip_raw;
+        findex_raw;
+    }
+
+    subgraph cluster_cleaning {
+        label="STEP 1: DATA CLEANING";
+        style=filled;
+        fillcolor="#E8F4FF";
+        color="#0088FF";
+        penwidth=2;
+        clean_pip;
+        clean_findex;
+        clean_findex_ts;
+        pip_cleaned;
+        findex_cleaned;
+        findex_cleaned_ts;
+    }
+
+    subgraph cluster_merging {
+        label="STEP 2: DATA MERGING";
+        style=filled;
+        fillcolor="#F0E8FF";
+        color="#6600CC";
+        penwidth=2;
+        merge_2024;
+        merge_ts;
+        master_2024;
+        master_ts;
+    }
+
+    subgraph cluster_analysis {
+        label="STEP 3: ANALYSIS";
+        style=filled;
+        fillcolor="#E8FFE8";
+        color="#00AA00";
+        penwidth=2;
+        analyze_2024;
+        analyze_ts;
+    }
+
+    subgraph cluster_outputs {
+        label="STEP 4: FINAL OUTPUTS (PNG + CSV/TXT)";
+        style=filled;
+        fillcolor="#FFF0E8";
+        color="#CC6600";
+        penwidth=2;
+        output1;
+        output2;
+        output3;
+        output4;
+        output5;
+        output6;
+        output_stats;
+    }
+
+    // Rank to force vertical layout
+    { rank=same; pip_raw; findex_raw; }
+    { rank=same; clean_pip; clean_findex; clean_findex_ts; }
+    { rank=same; pip_cleaned; findex_cleaned; findex_cleaned_ts; }
+    { rank=same; merge_2024; merge_ts; }
+    { rank=same; master_2024; master_ts; }
+    { rank=same; analyze_2024; analyze_ts; }
+}
