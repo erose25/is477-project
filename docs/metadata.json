@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Financial Inclusion and Poverty Analysis",
+  "description": "Research that involves combining World Bank Global Findex data and the Poverty and Inequality Platform (PIP) data to analyze the relationships between financial inclusion and poverty across countries.",
+  },
+  "datePublished": "2026-05-05",
+  "keywords": [
+    "financial inclusion",
+    "poverty",
+    "World Bank",
+    "Global Findex",
+  ],
+  "url": "https://www.worldbank.org/en/publication/globalfindex/download-data",
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "name": "World Bank Data"
+  },
+  "variableMeasured": [
+    {
+      "name": "account_pct",
+      "description": "Percentage of residents over 15 years old that have an account"
+    },
+    {
+      "name": "bank_account_pct",
+      "description": "Percentage of residents with a bank account"
+    },
+    {
+      "name": "mobile_account_pct",
+      "description": "Percentage of residents with a mobile money account"
+    },
+    {
+      "name": "digital_account_pct",
+      "description": "Percentage of residents with a digitally-enabled account"
+    },
+    {
+      "name": "poverty_headcount",
+      "description": "Proportion of population that falls below the poverty line"
+    },
+    {
+      "name": "gini",
+      "description": "Income inequality measured as a 0 or 1"
+    }
+  ]
+}
